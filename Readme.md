@@ -11,6 +11,8 @@ open [https://hsinyu-chen.github.io/MeganexPatcher/](https://hsinyu-chen.github.
 
 **The patcher code for version 1.4.0.0 was originally created by @Sabre (sabre9504) from the Shiftall Discord server.**
 
+**This tool is running completely on client side**
+
 # Disclaimer
 
 **_Use this tool at your own risk._**
