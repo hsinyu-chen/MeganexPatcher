@@ -55,3 +55,6 @@ body {
   display: flex;
   flex-direction: column;
 }
+.disclaimer b {
+  margin: 5px 0;
+}
