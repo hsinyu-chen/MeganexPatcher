@@ -1,0 +1,63 @@
+body,
+html {
+    background: rgb(33, 33, 33);
+    color: rgb(200, 200, 200);
+    font-family: monospace;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.field {
+    width: 100%;
+    flex-shrink: 0;
+    display: grid;
+    grid-template-columns: minmax(200px, 450px) 200px;
+    margin: 5px;
+    gap: 5px;
+
+    >div {
+        font-size: 120%;
+
+
+    }
+
+    input {
+        width: 180px;
+    }
+}
+
+.hide {
+    display: none;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(10, 10, 10);
+    border-radius: 10px;
+    padding: 10px;
+
+    >div {
+        flex-shrink: 0;
+        white-space: pre-line;
+        margin: 3px;
+
+    }
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.disclaimer {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+}
