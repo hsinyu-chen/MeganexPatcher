@@ -9,7 +9,7 @@ open [https://hsinyu-chen.github.io/MeganexPatcher/](https://hsinyu-chen.github.
 3. If the patch is successful, a ZIP file will be automatically downloaded 
 4. Unzip the ZIP file to MeganeX folder, override the original file.
 
-**The patcher code for version 1.4.0.0 was originally created by @Sabre (sabre9504) from the Shiftall Discord server.**
+**The [patcher code for version 1.4.0.0](/src/app/patcher/patcher140.ts) was originally created by @Sabre (sabre9504) from the Shiftall Discord server.**
 
 **This tool is running completely on client side**
 
