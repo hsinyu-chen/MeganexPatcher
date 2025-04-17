@@ -15,4 +15,4 @@ open [https://hsinyu-chen.github.io/MeganexPatcher/](https://hsinyu-chen.github.
 
 **_Use this tool at your own risk._**
 
-**This tool is running completely on client side, the Binaries never leave your computer , did not upload to any server , the sever host this tool did not save any infomation form you , the server only serve the static web(javascript/css/html) file, did not contain any Binaries from Shiftall**
+**This tool operates entirely on the client side. The binaries remain on your computer and are not uploaded to any server. The server hosting this tool does not store any information from you. It is solely responsible for serving static web files (JavaScript, CSS, HTML) and does not include any binaries from Shiftall**
