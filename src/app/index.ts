@@ -1,5 +1,5 @@
 import '../public/index.scss'
-import { calculateHash, delay, PatcherDefine, PatcherMap, readFile } from "./core";
+import { calculateHash, readFile } from "./core";
 import { MessageLogger } from "./log";
 import {
     BlobWriter,
@@ -9,13 +9,21 @@ import patchers from './patcher/patcher';
 (async () => {
     const logger = new MessageLogger(document.querySelector('.messages')!)
     const resInput = document.querySelector<HTMLInputElement>('input#s1')!;
+    const stopDefaultFileDrop = (e: DragEvent) => {
+        e.preventDefault();
+        if (e.dataTransfer) {
+            e.dataTransfer.effectAllowed = "none";
+            e.dataTransfer.dropEffect = "none";
+        }
+    }
+    window.addEventListener('dragover',stopDefaultFileDrop);
+    window.addEventListener('drop',stopDefaultFileDrop);
     const patch = async (buffer: ArrayBuffer) => {
         logger.clear();
         const hash = await calculateHash(buffer);
         if (hash in patchers) {
             const [version, patcher] = patchers[hash]
             logger.appendMessage(`version matched: ${version}`);
-            await delay(1);
             logger.appendMessage(`starting patch...`);
             try {
                 const dst = new ArrayBuffer(buffer.byteLength);
@@ -41,7 +49,8 @@ import patchers from './patcher/patcher';
                 logger.appendMessage(`unexpect error,${er}`, 'red')
             }
         } else {
-            logger.appendMessage(`no avalible patch found [${hash}]`, 'red')
+            logger.appendMessage(`no avalible patch found [${hash}]`, 'red');
+            logger.appendMessage(`make sure you select correct file!`, 'red')
         }
     }
     resInput.addEventListener('change', e => {

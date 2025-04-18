@@ -18,9 +18,6 @@ export async function calculateHash(data: BufferSource) {
         .map((b) => b.toString(16).padStart(2, '0'))
         .join('');
 }
-export const delay = (ms: number): Promise<void> => {
-    return new Promise(done => setTimeout(done, ms));
-}
 export const readFile = (blob: File | Blob): Promise<ArrayBuffer> => {
     return new Promise((done, rej) => {
         const reader = new FileReader();

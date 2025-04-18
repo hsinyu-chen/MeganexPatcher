@@ -1,8 +1,11 @@
 body,
 html {
     background: rgb(33, 33, 33);
-    color: rgb(200, 200, 200);
+    color: rgb(230, 230, 230);
     font-family: monospace;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -11,17 +14,18 @@ body {
 }
 
 .field {
-    width: 100%;
     flex-shrink: 0;
     display: grid;
-    grid-template-columns: minmax(200px, 450px) 200px;
+    grid-template-columns: minmax(200px, 450px) 300px;
     margin: 5px;
     gap: 5px;
+    border-radius: 10px;
+    border: 5px solid rgb(0, 0, 0);
+    padding: 5px;
 
     >div {
         font-size: 120%;
-
-
+        align-self: center;
     }
 
     input {
@@ -39,6 +43,9 @@ body {
     background-color: rgba(10, 10, 10);
     border-radius: 10px;
     padding: 10px;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
 
     >div {
         flex-shrink: 0;
@@ -57,10 +64,24 @@ body {
 }
 
 .disclaimer {
+    color: rgb(200, 200, 200);
     margin: 5px;
+
+    margin-top: auto;
     display: flex;
     flex-direction: column;
-    b{
+
+    b {
         margin: 5px 0;
     }
+}
+
+.remark {
+    margin: 5px;
+}
+
+pre {
+    background-color: rgba(10, 10, 10);
+    border-radius: 5px;
+    margin: 5px 0;
 }
