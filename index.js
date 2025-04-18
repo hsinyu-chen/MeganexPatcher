@@ -18,9 +18,6 @@
             .map((b) => b.toString(16).padStart(2, '0'))
             .join('');
     }
-    const delay = (ms) => {
-        return new Promise(done => setTimeout(done, ms));
-    };
     const readFile = (blob) => {
         return new Promise((done, rej) => {
             const reader = new FileReader();
@@ -9903,13 +9900,21 @@
     (async () => {
         const logger = new MessageLogger(document.querySelector('.messages'));
         const resInput = document.querySelector('input#s1');
+        const stopDefaultFileDrop = (e) => {
+            e.preventDefault();
+            if (e.dataTransfer) {
+                e.dataTransfer.effectAllowed = "none";
+                e.dataTransfer.dropEffect = "none";
+            }
+        };
+        window.addEventListener('dragover', stopDefaultFileDrop);
+        window.addEventListener('drop', stopDefaultFileDrop);
         const patch = async (buffer) => {
             logger.clear();
             const hash = await calculateHash(buffer);
             if (hash in patchers) {
                 const [version, patcher] = patchers[hash];
                 logger.appendMessage(`version matched: ${version}`);
-                await delay(1);
                 logger.appendMessage(`starting patch...`);
                 try {
                     const dst = new ArrayBuffer(buffer.byteLength);
@@ -9938,6 +9943,7 @@
             }
             else {
                 logger.appendMessage(`no avalible patch found [${hash}]`, 'red');
+                logger.appendMessage(`make sure you select correct file!`, 'red');
             }
         };
         resInput.addEventListener('change', e => {
