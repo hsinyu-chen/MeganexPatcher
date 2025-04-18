@@ -5,20 +5,8 @@ import {
     BlobWriter,
     ZipWriter,
 } from "@zip.js/zip.js";
-//patchers
-import patcher140 from './patcher/patcher140';
-import patcher1421 from './patcher/patcher1421';
+import patchers from './patcher/patcher';
 (async () => {
-    const patchers: PatcherMap = {}
-    const addPatcher = ([hash, version, patcher]: PatcherDefine) => {
-        patchers[hash] = [version, patcher];
-    }
-    //import all patchers
-
-    addPatcher(patcher140)
-    addPatcher(patcher1421)
-
-    //end
     const logger = new MessageLogger(document.querySelector('.messages')!)
     const resInput = document.querySelector<HTMLInputElement>('input#s1')!;
     const patch = async (buffer: ArrayBuffer) => {
@@ -76,24 +64,25 @@ import patcher1421 from './patcher/patcher1421';
             fileInput.value = '';
         }
     });
+    function correctNumber(input: HTMLInputElement) {
+        let value = input.value;
+        if (!/^\d+$/.test(value)) {
+            value = '7000';
+        }
+        const iv = parseInt(value, 10);
+        if (iv > 8000) {
+            value = '8000';
+        }
+        if (iv < 4084) {
+            value = '4084';
+        }
+        if (input.value != value) {
+            input.value = value;
+        }
+        return parseInt(value, 10);
+    }
 })();
 
 
-function correctNumber(input: HTMLInputElement) {
-    let value = input.value;
-    if (!/^\d+$/.test(value)) {
-        value = '7000';
-    }
-    const iv = parseInt(value, 10);
-    if (iv > 8000) {
-        value = '8000';
-    }
-    if (iv < 4084) {
-        value = '4084';
-    }
-    if (input.value != value) {
-        input.value = value;
-    }
-    return parseInt(value, 10);
-}
+
 
