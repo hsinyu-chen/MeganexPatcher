@@ -2,16 +2,12 @@ import '../public/index.scss'
 import { calculateHash, delay, PatcherDefine, PatcherMap, readFile } from "./core";
 import { MessageLogger } from "./log";
 import {
-    BlobReader,
     BlobWriter,
-    TextReader,
-    TextWriter,
-    ZipReader,
     ZipWriter,
 } from "@zip.js/zip.js";
 //patchers
 import patcher140 from './patcher/patcher140';
-
+import patcher1421 from './patcher/patcher1421';
 (async () => {
     const patchers: PatcherMap = {}
     const addPatcher = ([hash, version, patcher]: PatcherDefine) => {
@@ -20,6 +16,7 @@ import patcher140 from './patcher/patcher140';
     //import all patchers
 
     addPatcher(patcher140)
+    addPatcher(patcher1421)
 
     //end
     const logger = new MessageLogger(document.querySelector('.messages')!)
