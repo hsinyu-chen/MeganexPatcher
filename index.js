@@ -9881,7 +9881,7 @@
             view.setUint16(hex('0x4e3ac'), res, true);
         }];
 
-    const patch1421 = ['0840a6affb3744fa18de90dcfe4cdc052d74fe954935a41d5d50f4dfad1b142e', '1.4.0.0', (view, res) => {
+    const patch1421 = ['0840a6affb3744fa18de90dcfe4cdc052d74fe954935a41d5d50f4dfad1b142e', '1.4.2.1', (view, res) => {
             //width
             view.setUint8(hex('0x4e233'), hex('0xb8'));
             view.setUint16(hex('0x4e234'), res * 2, true);
