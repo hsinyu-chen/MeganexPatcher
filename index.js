@@ -9893,15 +9893,14 @@
             view.setUint16(hex('0x4e280'), res, true);
         }];
 
+    const patchers = {};
+    const addPatcher = ([hash, version, patcher]) => {
+        patchers[hash] = [version, patcher];
+    };
+    addPatcher(patcher140);
+    addPatcher(patch1421);
+
     (async () => {
-        const patchers = {};
-        const addPatcher = ([hash, version, patcher]) => {
-            patchers[hash] = [version, patcher];
-        };
-        //import all patchers
-        addPatcher(patcher140);
-        addPatcher(patch1421);
-        //end
         const logger = new MessageLogger(document.querySelector('.messages'));
         const resInput = document.querySelector('input#s1');
         const patch = async (buffer) => {
@@ -9962,24 +9961,24 @@
                 fileInput.value = '';
             }
         });
+        function correctNumber(input) {
+            let value = input.value;
+            if (!/^\d+$/.test(value)) {
+                value = '7000';
+            }
+            const iv = parseInt(value, 10);
+            if (iv > 8000) {
+                value = '8000';
+            }
+            if (iv < 4084) {
+                value = '4084';
+            }
+            if (input.value != value) {
+                input.value = value;
+            }
+            return parseInt(value, 10);
+        }
     })();
-    function correctNumber(input) {
-        let value = input.value;
-        if (!/^\d+$/.test(value)) {
-            value = '7000';
-        }
-        const iv = parseInt(value, 10);
-        if (iv > 8000) {
-            value = '8000';
-        }
-        if (iv < 4084) {
-            value = '4084';
-        }
-        if (input.value != value) {
-            input.value = value;
-        }
-        return parseInt(value, 10);
-    }
 
 })();
 //# sourceMappingURL=index.js.map
