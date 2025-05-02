@@ -2,9 +2,7 @@ export type Patcher = (buffer: DataView, targetRes: number) => Promise<void> | v
 
 export type PatcherDefine = [hash: string, version: string, Patcher];
 export type PatcherMap = { [hash: string]: [version: string, Patcher] };
-export function hex(hexstr: string) {
-    return parseInt(hexstr.replace(/^0x/, ''), 16);
-}
+
 export function setView(view: DataView, start: number, values: number[]) {
     let offset = start;
     for (let n of values) {

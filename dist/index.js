@@ -2,9 +2,6 @@
     'use strict';
 
     var _documentCurrentScript = typeof document !== 'undefined' ? document.currentScript : null;
-    function hex(hexstr) {
-        return parseInt(hexstr.replace(/^0x/, ''), 16);
-    }
     function setView(view, start, values) {
         let offset = start;
         for (let n of values) {
@@ -9868,26 +9865,26 @@
 
     const patcher140 = ['aec18721ace89241333100573cf944307c5fe4559b796ef858f2e38419ab48a5', '1.4.0.0', (view, res) => {
             //width
-            view.setUint8(hex('0x4e353'), hex('0xb8'));
-            view.setUint16(hex('0x4e354'), res * 2, true);
-            setView(view, hex('0x4e356'), [hex('0x00'), hex('0x00'), hex('0x90'), hex('0x48'), hex('0x90')]);
+            view.setUint8(0x4e353, 0xb8);
+            view.setUint16(0x4e354, res * 2, true);
+            setView(view, 0x4e356, [0x00, 0x00, 0x90, 0x48, 0x90]);
             //middle point
-            view.setFloat32(hex('0x4e391'), res, true);
-            view.setFloat32(hex('0x4e39c'), res, true);
+            view.setFloat32(0x4e391, res, true);
+            view.setFloat32(0x4e39c, res, true);
             //height
-            view.setUint16(hex('0x4e3ac'), res, true);
+            view.setUint16(0x4e3ac, res, true);
         }];
 
     const patch1421 = ['0840a6affb3744fa18de90dcfe4cdc052d74fe954935a41d5d50f4dfad1b142e', '1.4.2.1', (view, res) => {
             //width
-            view.setUint8(hex('0x4e233'), hex('0xb8'));
-            view.setUint16(hex('0x4e234'), res * 2, true);
-            setView(view, hex('0x4e236'), [hex('0x00'), hex('0x00'), hex('0x90'), hex('0x48'), hex('0x90')]);
+            view.setUint8(0x4e233, 0xb8);
+            view.setUint16(0x4e234, res * 2, true);
+            setView(view, 0x4e236, [0x00, 0x00, 0x90, 0x48, 0x90]);
             //middle point
-            view.setFloat32(hex('0x4e265'), res, true);
-            view.setFloat32(hex('0x4e270'), res, true);
+            view.setFloat32(0x4e265, res, true);
+            view.setFloat32(0x4e270, res, true);
             //height
-            view.setUint16(hex('0x4e280'), res, true);
+            view.setUint16(0x4e280, res, true);
         }];
 
     const patchers = {};
